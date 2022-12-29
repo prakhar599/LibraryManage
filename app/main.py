@@ -53,7 +53,7 @@ Operations that can be performed:
 
 """   
  
-app = FastAPI( title="Librarian Management App",
+app = FastAPI( title="Library Management App",
     description=description,
     version="0.0.1",
     openapi_tags=tags_metadata
