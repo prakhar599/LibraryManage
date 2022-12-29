@@ -17,7 +17,7 @@ models.Base.metadata.create_all(bind=engine)
 
 tags_metadata = [
     {
-        "name": "users",
+        "name": "Users",
         "description": "Operations for User Managment",
         "externalDocs": {
             "description": "Users external docs",
