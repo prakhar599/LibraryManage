@@ -1,0 +1,31 @@
+One-Many relationships:
+
+There are several types of relationships between tables, but probably the most common is the one-to-many relationship,
+which is often written as 1:N. This kind of relationship means that one row in a table (usually called 
+the parent table) can have a relationship with many rows in another table (usually called child table).
+Some common examples of one-to-many relationships are:
+1.One customer may make several purchases, but each purchase is made by a single customer.
+2.One company can have many phone numbers, but a phone number belongs to one company.
+
+
+
+Many-Many relationships:
+
+1.One professor could teach one or many subjects, but one subject could also be taught by
+one or many professors. It seems it is an M:N relationship, so here’s how your logical model 
+should look:
+
+
+
+One-One relationship:
+It’s a relationship where a record in one entity (table) is associated with exactly one record in
+another entity (table).
+
+1. Country - capital city: Each country has exactly one capital city.
+Each capital city is the capital of exactly one country.
+2. Person - their fingerprints. Each person has a unique set of fingerprints.
+Each set of fingerprints identifies exactly one person 
+
+
+Issues: should one book table record be treated as one single
+entity?
