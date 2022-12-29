@@ -48,7 +48,7 @@ def read_user(user: UserLoginSchema = Body(...),db: Session=Depends(get_db)):
 @user_router.delete("/{user_id}/del")
 def del_user(user_id:str ,db: Session = Depends(get_db)):
     """
-    delete any user by passing his ID number as integer.
+    delete any user by passing his/her ID.
      
     """
     return crud.del_user(db,user_id=user_id)
