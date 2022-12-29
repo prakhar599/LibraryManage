@@ -37,16 +37,17 @@ tags_metadata = [
 
 # description to be used in API metadata       
 description = """
-Library Management API helps you register users in database in a secure way . 🚀
+Library Management API helps you automate library functions in a secure way. 
+This API provides a good exposure to its functionalities Even for a layman 
+and it makes it very handy to deal with Users ,Librarians and Books' data in back-end. 🚀
 
-## Users
+## Library Management API
 Operations that can be performed:
-* **Get users from DB** 
-* **Get Librarians from DB** 
 * **Create users**
 * **Create Librarians**
 * **Get Book details from DB** 
-* **Update users' credentials** 
+* **Inserting New Books in DB** 
+* **Update users' credentials( Refreshing of Tokens )** 
 * **Delete users** 
 * **Issuing book** 
 

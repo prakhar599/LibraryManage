@@ -13,7 +13,7 @@ class UserSchema(BaseModel):
             "example": {
                 "Name": "Joelay field",
                 "Password": "any",
-                "Role": "user or librarian"
+                "Role": "user or Librarian"
             }
         }
         orm_mode = True

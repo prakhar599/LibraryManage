@@ -31,6 +31,8 @@ def create_user(db: Session = Depends(get_db),user: UserSchema = Body(...)):
     dict.update(addon)
     return dict
 
+
+
 @user_router.post("/login") 
 def read_user(user: UserLoginSchema = Body(...),db: Session=Depends(get_db)):
     """
@@ -43,6 +45,8 @@ def read_user(user: UserLoginSchema = Body(...),db: Session=Depends(get_db)):
         if ppl.Name == user.Name and hashing.verify_password(user.Password, ppl.Password) :
             return signJWT(ppl.Role)
     return { "error": "Wrong login details!"} 
+
+
 
 #Delete any user by using his ID
 @user_router.delete("/{user_id}/del")
