@@ -6,9 +6,10 @@ from sqlalchemy.orm import Session
 import crud
 from auth.auth_bearer import JWTBearer
 
+
 router = APIRouter(
     prefix="/book",
-    tags=["books"],
+    tags=["Books"],
     responses={404: {"description": "Not found"}},
 )
 
