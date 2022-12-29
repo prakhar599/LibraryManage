@@ -10,7 +10,7 @@ from database.dbsession import get_db
 
 user_router = APIRouter(
     prefix="/user",
-    tags=["users"],
+    tags=["Users"],
 )
 
 
