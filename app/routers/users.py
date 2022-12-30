@@ -11,6 +11,10 @@ from database.dbsession import get_db
 user_router = APIRouter(
     prefix="/user",
     tags=["Users"],
+    responses={
+        404: {"description": "Not found"},
+        500: {"description":"The server has encountered a situation it does not know how to handle."}
+    },
 )
 
 
@@ -19,8 +23,8 @@ user_router = APIRouter(
 @user_router.post("/signup")
 def create_user(db: Session = Depends(get_db),user: UserSchema = Body(...)):
     """
-    This endpoint lets you create a new user in database. As you provide `name` , `email` , `date of birth` and
-    `password` fields as `BODY()` param. This POST request will insert a new user row in databse schema. 
+    This endpoint lets you create a new user in database. As you provide `Name` , `Password` and
+    `Role` fields as `BODY()` param. This POST request will insert a new user row in databse schema. 
      
     """
     user = crud.create_user(db,user=user)

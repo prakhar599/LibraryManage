@@ -25,7 +25,3 @@ another entity (table).
 Each capital city is the capital of exactly one country.
 2. Person - their fingerprints. Each person has a unique set of fingerprints.
 Each set of fingerprints identifies exactly one person 
-
-
-Issues: should one book table record be treated as one single
-entity?

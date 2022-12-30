@@ -45,8 +45,8 @@ def issue_book(db: Session, book: schemas.BookSchema):
     db.commit()
     return {"msg":"book has been issued for you"}
 
-def issue_details(db: Session, book:schemas.BookSchema, user_id:str, book_id:str ):
-    db_details = Issue_table(Book_id = book_id , Stu_id=user_id, Issue_date=date.today())
+def issue_details(db: Session, book:schemas.BookSchema, user_id:str, book_id:str, return_date:date ):
+    db_details = Issue_table(Book_id = book_id , Stu_id=user_id, Issue_date=date.today(), Return_date=return_date)
     db.add(db_details)
     db.commit()
     db.refresh(db_details)

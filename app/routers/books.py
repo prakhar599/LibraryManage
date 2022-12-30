@@ -5,12 +5,16 @@ from auth.auth_handler import signJWT
 from sqlalchemy.orm import Session
 import crud
 from auth.auth_bearer import JWTBearer
+from datetime import date
 
 
 router = APIRouter(
     prefix="/book",
     tags=["Books"],
-    responses={404: {"description": "Not found"}},
+    responses={
+        404: {"description": "Not found"},
+        400: {"description": "Invalid request message framing"}
+},
 )
 
 
@@ -33,10 +37,10 @@ def create_book(db: Session = Depends(get_db),book: BookSchema = Body(...)):
     return {"Response":"successfully added"}
 
 @router.post("/issue")
-def issue_book(*,db: Session = Depends(get_db),book: BookIssueSchema = Body(...),user_id: str, book_id: str): 
+def issue_book(*,db: Session = Depends(get_db),book: BookIssueSchema = Body(...),user_id: str, book_id: str, return_date:date): 
     """
     To get any book issued from library , use this API end point. Any user , be it a librarian or student, can issue book from db.
      
     """
-    crud.issue_details(db,book=book, user_id = user_id, book_id = book_id)
+    crud.issue_details(db,book=book, user_id = user_id, book_id = book_id, return_date=return_date)
     return crud.issue_book(db,book=book)
