@@ -25,6 +25,7 @@ router = APIRouter(
 def get_books(db:Session = Depends(get_db)):
     return crud.get_books(db)
 
+# get details of a single book from db.
 @router.get("/get_book")
 def get_book(book_name:str, author:str, db:Session = Depends(get_db)): 
     return crud.get_book(db, book_name, author) 
