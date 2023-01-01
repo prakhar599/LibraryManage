@@ -24,6 +24,10 @@ router = APIRouter(
 def get_books(db:Session = Depends(get_db)):
     return crud.get_books(db)
 
+@router.get("/get_book")
+def get_book(book_name:str, author:str, db:Session = Depends(get_db)): 
+    return crud.get_book(db, book_name, author) 
+
 # API endpoint to insert a new book in database schema by librarian
 @router.post("/add",dependencies=[Depends(JWTBearer())])
 def create_book(db: Session = Depends(get_db),book: BookSchema = Body(...)):
@@ -44,3 +48,12 @@ def issue_book(*,db: Session = Depends(get_db),book: BookIssueSchema = Body(...)
     """
     crud.issue_details(db,book=book, user_id = user_id, book_id = book_id, return_date=return_date)
     return crud.issue_book(db,book=book)
+
+@router.delete("/del",dependencies=[Depends(JWTBearer())])
+def delete_book(id:str, db: Session = Depends(get_db)):
+    """
+    This endpoint lets you delete any book from database. As librarian provides `book_id` as QUERY parameter the API
+    shall delete it. Note that it's am irreversible process hence can't be undone.     
+    """
+    crud.del_book(db, id = id)
+    return {"Response":"successfully deleted"}

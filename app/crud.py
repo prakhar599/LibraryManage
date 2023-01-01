@@ -3,6 +3,7 @@ from database import models , schemas
 from database.models import *
 from auth import hashing
 from datetime import date
+from sqlalchemy import and_
 
 
 # SqlAlchemy ORM query to get all users.
@@ -36,14 +37,27 @@ def create_book(db: Session, book: schemas.BookSchema):
     db.refresh(db_lib)
     
 def get_books(db: Session):
-    author = db.query(models.Book).all()
-    return author  
+    books = db.query(models.Book).all()
+    return books  
+
+def get_book(db: Session, book_name: str, author:str):
+    book = db.query(models.Book).filter(models.Book.Title == book_name, models.Book.Author==author).first()
+    if book is not None:
+        return book
+    else:
+        return {"message":"Book Not Found" }
+        
 
 
 def issue_book(db: Session, book: schemas.BookSchema):
     db.query(models.Book).filter(models.Book.Title == book.Title).update({models.Book.No_of_copies : models.Book.No_of_copies-1}, synchronize_session = False) 
     db.commit()
     return {"msg":"book has been issued for you"}
+
+def del_book(db: Session, id:str):
+    db.query(models.Issue_table).filter(models.Issue_table.Book_id == id).delete()
+    db.query(models.Book).filter(models.Book.id == id).delete()
+    db.commit()
 
 def issue_details(db: Session, book:schemas.BookSchema, user_id:str, book_id:str, return_date:date ):
     db_details = Issue_table(Book_id = book_id , Stu_id=user_id, Issue_date=date.today(), Return_date=return_date)

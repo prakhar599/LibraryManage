@@ -1,5 +1,4 @@
 from sqlalchemy import Boolean, Column, ForeignKey, Integer, String, Date
-from sqlalchemy.orm import relationship
 from .database import Base
 import uuid
 
@@ -28,9 +27,9 @@ class Book(Base):
 class Issue_table(Base):
     __tablename__ = "Issue_table"
     id = Column(String, name="uuid", primary_key=True, default=generate_uuid)
-    Book_id = Column(String, ForeignKey(Book.id))  
+    Book_id = Column(String, ForeignKey(Book.id, ondelete="CASCADE"))  
     Stu_id = Column(String, ForeignKey(User.id))      
-    Issue_date = Column(Date)
+    Issue_date = Column(Date) 
     Return_date = Column(Date)
 
     
