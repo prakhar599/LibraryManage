@@ -27,6 +27,6 @@ class JWTBearer(HTTPBearer):
             payload = decodeJWT(jwtoken)                
         except:
             payload = None
-        if payload["user_id"] == "Librarian":
+        if payload["user_role"] == "Librarian":
             isTokenValid = True
         return isTokenValid
