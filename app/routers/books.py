@@ -96,8 +96,7 @@ def show_issue_table(
 @router.patch("/edit",dependencies=[Depends(JWTBearer())]) 
 def update_book(db: Session = Depends(get_db), book: BookSchema = Body(...)):
     """
-    This endpoint will let you update data of books available in db. Note that email field can't be updated 
-    yet you have to provide it's value to authenticate yourself. and rest attributes will get  update in db.
+    This endpoint will let you update data of books available in db.
      
     """
     crud.update_book(db, book = book) 
