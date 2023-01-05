@@ -4,7 +4,7 @@ from sqlalchemy.orm import sessionmaker
 
 
 
-DATABASE_URL = "postgresql+psycopg2://postgres:postgres@db:5432/LibraryManagementSystem"
+DATABASE_URL = "postgresql+psycopg2://prakhar.parashari:postgres@db:5432/LibraryManagementSystem"
 # DATABASE_URL = "postgresql+psycopg2://postgres:postgres@localhost:5432/LibraryManagementSystem"
 
 engine = create_engine(
